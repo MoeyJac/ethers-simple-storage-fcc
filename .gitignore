@@ -1,0 +1,8 @@
+
+.DS_Store
+
+.vscode/settings.json
+
+node_modules/
+.env
+.encryptedKey.json
