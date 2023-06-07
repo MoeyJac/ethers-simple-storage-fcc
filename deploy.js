@@ -1,16 +1,11 @@
 const ethers = require("ethers");
 const fs = require("fs");
+require("dotenv").config();
 
 async function main() {
-  // RPC Server http://127.0.0.1:7545
-  const provider = new ethers.providers.JsonRpcProvider(
-    "http://127.0.0.1:7545"
-  );
+  const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
 
-  const wallet = new ethers.Wallet(
-    "0x4a3c12de5ed1ffd1d8c81e1ea2aa26b463adc052778fb652d345c2f4638232d0",
-    provider
-  );
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf-8");
   const binary = fs.readFileSync(
